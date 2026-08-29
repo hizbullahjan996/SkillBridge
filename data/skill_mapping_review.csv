@@ -1,0 +1,212 @@
+Skill,Category,Notes
+Data Analysis,Matched Skill,Exact normalized match found in both datasets.
+SQL,Matched Skill,Exact normalized match found in both datasets.
+React,Matched Skill,Exact normalized match found in both datasets.
+React Native,Matched Skill,Exact normalized match found in both datasets.
+MySQL,Matched Skill,Exact normalized match found in both datasets.
+NumPy,Matched Skill,Exact normalized match found in both datasets.
+Python,Matched Skill,Exact normalized match found in both datasets.
+AWS,Matched Skill,Exact normalized match found in both datasets.
+FastAPI,Matched Skill,Exact normalized match found in both datasets.
+Node.js,Matched Skill,Exact normalized match found in both datasets.
+TypeScript,Matched Skill,Exact normalized match found in both datasets.
+Pandas,Matched Skill,Exact normalized match found in both datasets.
+Figma,Matched Skill,Exact normalized match found in both datasets.
+Agile,Matched Skill,Exact normalized match found in both datasets.
+Django,Matched Skill,Exact normalized match found in both datasets.
+GCP,Matched Skill,Exact normalized match found in both datasets.
+PHP,Matched Skill,Exact normalized match found in both datasets.
+Scrum,Matched Skill,Exact normalized match found in both datasets.
+Flutter,Matched Skill,Exact normalized match found in both datasets.
+PyTorch,Matched Skill,Exact normalized match found in both datasets.
+Cybersecurity,Matched Skill,Exact normalized match found in both datasets.
+JavaScript,Matched Skill,Exact normalized match found in both datasets.
+TensorFlow,Matched Skill,Exact normalized match found in both datasets.
+PostgreSQL,Matched Skill,Exact normalized match found in both datasets.
+Machine Learning,Matched Skill,Exact normalized match found in both datasets.
+Laravel,Matched Skill,Exact normalized match found in both datasets.
+GraphQL,Matched Skill,Exact normalized match found in both datasets.
+Elasticsearch,Matched Skill,Exact normalized match found in both datasets.
+Networking,Matched Skill,Exact normalized match found in both datasets.
+Kubernetes,Matched Skill,Exact normalized match found in both datasets.
+Terraform,Matched Skill,Exact normalized match found in both datasets.
+REST APIs,Matched Skill,Exact normalized match found in both datasets.
+Azure,Matched Skill,Exact normalized match found in both datasets.
+Ansible,Matched Skill,Exact normalized match found in both datasets.
+MongoDB,Matched Skill,Exact normalized match found in both datasets.
+Adobe XD,Matched Skill,Exact normalized match found in both datasets.
+Git,Matched Skill,Exact normalized match found in both datasets.
+Docker,Matched Skill,Exact normalized match found in both datasets.
+Linux,Matched Skill,Exact normalized match found in both datasets.
+Redis,Matched Skill,Exact normalized match found in both datasets.
+CI CD,Dataset 1 Only,"Tracked for students, no exact match in Dataset 2 required skills."
+Revit,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Credit Appraisal,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ftth,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Cost Estimation,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Google Analytics,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Patient Counseling,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Erp Systems,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Project Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Core Banking Systems,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Plc Programming,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ci/Cd,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Wash,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Social Media Marketing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Amazon Seller Central,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ms Excel,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Adobe Photoshop,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Relationship Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Hubspot,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Optical Fiber,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Field Operations,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Bim,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Logical Framework,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Spss,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Curriculum Development,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Legal Knowledge,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Cpr,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Rf Planning,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Electrical Engineering,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Community Mobilization,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Network Monitoring,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Public Relations,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Donor Reporting,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Bloomberg,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Temenos,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Medical Imaging,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Customs Procedures,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Civil Engineering,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Analytics,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Seo,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Premiere Pro,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Solidworks,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Route Optimization,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Research Writing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Lean Manufacturing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Banking Regulations,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+English Proficiency,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Crm Tools,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Student Counseling,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Mechanical Engineering,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Matlab,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Route-To-Market,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Key Account Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Content Writing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Market Research,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Data Collection Tools,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Budget Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Medical Coding,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Lesson Planning,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Medical Diagnosis,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Supply Chain,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Vendor Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Infection Control,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Logistics Software,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Quality Control,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ms Office,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Treasury Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Facebook Ads,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Loan Origination,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sbp Compliance,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Content Strategy,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Research Methodology,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Mpls,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Financial Modeling,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Site Supervision,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Nielsen,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Promotional Planning,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Public Health,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Copywriting,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Oss/Bss,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Safety Regulations,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Iso Standards,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Supply Chain Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Decision Making,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Google Ads,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Woocommerce,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Email Marketing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Quantity Surveying,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Pharmacology,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Lms Administration,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Language Skills,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Troubleshooting,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sap Scm,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Six Sigma,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Import/Export Documentation,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Photography,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+M&E Frameworks,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ericsson,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Office Administration,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sketchup,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Stakeholder Engagement,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Negotiation,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Cold Chain,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Building Codes,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Demand Planning,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Kyc,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Video Production,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+5S Methodology,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Surveying Equipment,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Humanitarian Standards (Sphere),Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Power Bi,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Distributor Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sales Strategy,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Assessment Design,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Network Optimization,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Urdu Typing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Report Writing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Trade Marketing,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Construction Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Huawei Equipment,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ppra Rules,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Public Policy,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sem,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Adobe Illustrator,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Autocad,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Google Workspace,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Warehouse Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Financial Analysis,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sap Fico,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Trade Finance,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Osha Compliance,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Etabs,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+4G/5G,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Fleet Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Brand Identity,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Brand Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Shopify,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ms Project,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+E-Learning Platforms,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Educational Psychology,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Patient Care,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Triage,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Structural Analysis,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Classroom Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Marketing Analytics,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Risk Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Training Delivery,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Forecasting,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Inventory Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Ifrs,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Data Entry,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Production Planning,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+File Management,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Daraz Seller,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Communication,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Sap Erp,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Voip,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Bgp/Ospf,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Canva,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Klaviyo,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Lab Techniques,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Anti-Money Laundering,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Government Procedures,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Procurement,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Gender Mainstreaming,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Inventory Control,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Primavera P6,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Budgeting,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Emr Systems,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Clinical Skills,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."
+Customer Service,Dataset 2 Only,"Required by employers, not tracked as a Dataset 1 skill column."

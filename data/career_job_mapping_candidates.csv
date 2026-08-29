@@ -1,0 +1,200 @@
+Career_Field,Related_Job_Title,Mapping_Type,Confidence,Notes
+AI Engineer,Ai Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Biomedical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Civil Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Cloud Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Core Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Devops Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Electrical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Industrial Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Machine Learning Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Mechanical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Mep Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Noc Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Plant Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Process Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Qa Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Rf Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Site Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Software Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Structural Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Telecom Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Transmission Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Voip Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+AI Engineer,Wash Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Ai Engineer']
+Automation Engineer,Ai Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Biomedical Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Civil Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Cloud Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Core Network Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Devops Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Electrical Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Industrial Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Machine Learning Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Mechanical Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Mep Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Network Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Noc Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Plant Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Process Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Qa Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Rf Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Site Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Software Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Structural Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Telecom Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Transmission Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Voip Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Automation Engineer,Wash Engineer,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Ai Engineer', 'Biomedical Engineer', 'Civil Engineer', 'Cloud Engineer', 'Core Network Engineer']"
+Backend Developer,Android Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Backend Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Blockchain Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Curriculum Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,E-Learning Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Frontend Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Full Stack Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Ios Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Backend Developer,Mobile App Developer,Text/Keyword Match,Strong,Exact normalized match: ['Backend Developer']
+Business Analyst,Billing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Business Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Consumer Insights Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Credit Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Cybersecurity Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Data Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Investment Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Marketing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Operations Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Performance Marketing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Research Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Risk Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Social Media Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Spectrum Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Business Analyst,Supply Chain Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Business Analyst']
+Cloud Engineer,Ai Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Biomedical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Civil Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Cloud Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Core Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Devops Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Electrical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Industrial Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Machine Learning Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Mechanical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Mep Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Noc Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Plant Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Process Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Qa Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Rf Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Site Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Software Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Structural Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Telecom Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Transmission Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Voip Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cloud Engineer,Wash Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Cloud Engineer']
+Cybersecurity Analyst,Billing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Business Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Consumer Insights Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Credit Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Cybersecurity Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Data Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Investment Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Marketing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Operations Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Performance Marketing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Research Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Risk Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Social Media Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Spectrum Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Cybersecurity Analyst,Supply Chain Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Cybersecurity Analyst']
+Data Analyst,Billing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Business Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Consumer Insights Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Credit Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Cybersecurity Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Data Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Data Entry Operator,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Data Scientist,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Investment Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Marketing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Operations Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Performance Marketing Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Research Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Risk Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Social Media Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Spectrum Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Analyst,Supply Chain Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Analyst']
+Data Scientist,Data Analyst,Text/Keyword Match,Strong,Exact normalized match: ['Data Scientist']
+Data Scientist,Data Entry Operator,Text/Keyword Match,Strong,Exact normalized match: ['Data Scientist']
+Data Scientist,Data Scientist,Text/Keyword Match,Strong,Exact normalized match: ['Data Scientist']
+DevOps Engineer,Ai Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Biomedical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Civil Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Cloud Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Core Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Devops Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Electrical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Industrial Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Machine Learning Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Mechanical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Mep Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Noc Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Plant Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Process Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Qa Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Rf Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Site Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Software Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Structural Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Telecom Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Transmission Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Voip Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+DevOps Engineer,Wash Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Devops Engineer']
+Embedded Systems Engineer,,None,No Match,No related job title found via keyword/substring comparison.
+Full Stack Developer,Full Stack Developer,Text/Keyword Match,Strong,Exact normalized match: ['Full Stack Developer']
+IT Support Engineer,It Support Specialist,Text/Keyword Match,Weak,Partial keyword overlap only: ['It Support Specialist']
+Machine Learning Engineer,Machine Learning Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Machine Learning Engineer']
+Penetration Tester,,None,No Match,No related job title found via keyword/substring comparison.
+SOC Analyst,Billing Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Business Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Consumer Insights Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Credit Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Cybersecurity Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Data Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Investment Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Marketing Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Operations Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Performance Marketing Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Research Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Risk Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Social Media Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Spectrum Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+SOC Analyst,Supply Chain Analyst,Text/Keyword Match,Weak,"Partial keyword overlap only: ['Billing Analyst', 'Business Analyst', 'Consumer Insights Analyst', 'Credit Analyst', 'Cybersecurity Analyst']"
+Software Engineer,Ai Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Biomedical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Civil Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Cloud Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Core Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Devops Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Electrical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Industrial Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Machine Learning Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Mechanical Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Mep Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Network Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Noc Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Plant Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Process Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Qa Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Rf Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Site Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Software Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Structural Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Telecom Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Transmission Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Voip Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
+Software Engineer,Wash Engineer,Text/Keyword Match,Strong,Exact normalized match: ['Software Engineer']
