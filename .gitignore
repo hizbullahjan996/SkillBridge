@@ -35,16 +35,13 @@ yarn-error.log*
 frontend/dist/
 frontend/build/
 backend/build/
+*.tsbuildinfo
 
 # === Database ===
 *.db
 *.sqlite3
 
 # === ML Artifacts ===
-ml/models/*.joblib
-ml/models/*.pkl
-ml/models/*.h5
-ml/models/*.pt
 ml/notebooks/.ipynb_checkpoints/
 *.ipynb_checkpoints/
 
