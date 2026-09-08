@@ -27,10 +27,10 @@ SkillBridge solves this by providing an end-to-end personalized career guidance 
 
 - **AI/ML Career Recommendation** — RandomForest classifier trained on 6,000 student profiles (89% accuracy)
 - **Top-3 Career Prediction** — Ranked career fields with confidence probabilities
-- **Pakistan Job Matching** — 10,500 job postings mapped to 16 career categories
+- **Pakistan Job Matching** — 2,884 job postings (from 10,500 cleaned) mapped across 16 career categories
 - **Skill Gap Analysis** — Identifies matched vs missing skills with priority scoring
 - **Personalized Learning Roadmap** — Ordered by demand, relevance, and difficulty
-- **Learning Resources** — 30+ curated real resources with progress tracking
+- **Learning Resources** — 28 curated real resources with progress tracking
 - **AI Career Assistant** — Context-aware chat using student's actual SkillBridge data
 - **Admin Dashboard** — Real-time analytics, user management, system health
 
@@ -89,14 +89,15 @@ SkillBridge/
 │   │   ├── models/           # SQLAlchemy ORM models
 │   │   ├── schemas/          # Pydantic request/response schemas
 │   │   ├── services/         # Business logic layer
-│   │   ├── ml/               # ML integration (loader, predictor)
+│   │   ├── ml/               # ML integration (loader, predictor, feature builder)
+│   │   │   └── artifacts/    # Trained model (.joblib) + metadata
 │   │   └── utils/            # Helpers
-│   ├── tests/                # Backend tests
+│   ├── scripts/              # Seed/import/maintenance scripts
+│   ├── tests/                # Backend tests (165 passing)
 │   └── alembic/              # Database migrations
-├── ml/                       # Machine Learning (separate from backend)
+├── ml/                       # Machine Learning workspace (notebooks, data)
 │   ├── notebooks/            # Jupyter notebooks (EDA, preprocessing)
-│   ├── data/                 # ML-specific data artifacts
-│   └── models/               # Saved model files (.joblib)
+│   └── data/                 # ML-specific data artifacts
 ├── data/                     # Datasets (CSV files)
 ├── docs/                     # Documentation
 ├── docker-compose.yml
@@ -112,6 +113,17 @@ SkillBridge/
 | `Dataset_2_Cleaned.csv` | Pakistan job market postings (cleaned) | 10,500 |
 | `career_job_mapping_candidates.csv` | Career field to job title mapping | 200 |
 | `skill_mapping_review.csv` | Skill matching review between datasets | 211 |
+
+After seeding, the live PostgreSQL database contains:
+
+| Table | Rows |
+|-------|------|
+| `skills` | 212 |
+| `careers` | 16 |
+| `jobs` | 2,884 |
+| `job_skills` | 15,849 |
+| `career_job_mappings` | 45,936 (~99.6% job coverage) |
+| `learning_resources` | 28 |
 
 ## Getting Started
 
@@ -195,8 +207,10 @@ npm run dev
 ### Docker
 
 ```bash
-docker-compose up -d
+docker compose up --build -d
 ```
+
+The full stack is then available at `http://localhost` (frontend via Nginx on port 80, which proxies `/api` to the FastAPI backend). The backend API is also directly reachable at `http://localhost:8000`.
 
 ### Running Tests
 
@@ -347,7 +361,7 @@ Missing Skill → Relevant Resources → Learning Progress
 ```
 
 **Curated Catalog:**
-- 30+ real, verified learning resources
+- 28 real, verified learning resources
 - Providers: Python.org, MDN, freeCodeCamp, Docker, AWS, Kaggle, Scikit-learn, etc.
 - All URLs are real and verified
 - Resource types: course, documentation, tutorial, book
@@ -463,6 +477,18 @@ Admin Dashboard → User/Student Management → Analytics → System Health → 
 
 | Route | Component |
 |-------|-----------|
+| `/student/login` | LoginPage |
+| `/student/register` | RegisterPage |
+| `/admin/login` | LoginPage (admin mode) |
+| `/profile` | ProfilePage |
+| `/profile/edit` | EditProfilePage |
+| `/skills` | SkillsPage |
+| `/careers` | CareersPage |
+| `/jobs` | JobsPage |
+| `/skill-gap` | SkillGapPage (falls back to top recommended career) |
+| `/skill-gap/:careerName` | SkillGapPage (career-specific) |
+| `/learning-resources` | LearningResourcesPage |
+| `/assistant` | AssistantPage |
 | `/admin` | AdminDashboardPage (8 KPI cards) |
 | `/admin/users` | AdminUsersPage (search, filter, pagination) |
 | `/admin/students` | AdminStudentsPage (student table) |
@@ -483,11 +509,24 @@ Stabilization phase: security hardening, testing, Docker, and deployment prepara
 
 | Metric | Value |
 |--------|-------|
-| Total tests | 160 |
-| Passed | 160 |
+| Total tests | 165 |
+| Passed | 165 |
 | Coverage | 76% |
 
-### Security Fixes
+### End-to-End Regression Tests
+
+`backend/tests/test_career_recommendation_flow.py` exercises the full pipeline against the **real trained model**
+(no fixtures/mocks) and validates the persisted end-to-end flow:
+
+1. Predicting careers persists 3 ranked `CareerRecommendation` rows with `ready=true` and `model_version=1.0.0`
+2. Retrieving the latest recommendations returns the freshly predicted careers in order
+3. Job recommendations return ranked jobs with `match_score`, `career_score`, and `in_top_career`
+4. Skill gap analysis returns both matched and missing skills for the recommended career
+5. Learning recommendations return relevant resources ordered by skill priority
+
+Verified by walking through the flow for a real student profile: predict → latest → jobs → skill-gap → learning.
+
+### Security & Bug Fixes
 
 - Password strength validation (8+ chars, uppercase, lowercase, digit)
 - Default SECRET_KEY rejected in production
@@ -495,14 +534,47 @@ Stabilization phase: security hardening, testing, Docker, and deployment prepara
 - Unused passlib dependency removed
 - Dead code in admin analytics removed
 - Bug in learning resource import fixed
+- **ML model path fixed** — now resolves to `app/ml/artifacts/skillbridge_career_classifier.joblib` (the stale
+  `../ml/models/...` default broke model loading and the admin health check)
+- **Skill Gap page blank-screen fix** — `/skill-gap` now matches its own route (sidebar link hid behind the
+  `/skill-gap/:careerName` pattern); `SkillGapPage` falls back to the student's top recommended career when no
+  career name is supplied
+- **Readable API errors** — FastAPI 422 validation messages are extracted from the `detail[]` array instead of
+  rendering as `[object Object]`
+- **N+1 query optimization** — precomputed caches in `career_job_mapping_service` and `job_matching_service`
+  eliminate repeated per-row DB queries during job matching / mapping generation
+- **Feature normalization fix** — `feature_builder` now emits the same column names the trained model expects
+  (e.g. `Skill_Node.js`, `Skill_REST_APIs`)
 
 ### Docker
 
 ```bash
 docker compose up --build -d
 docker compose exec backend alembic upgrade head
+```
+
+The stack consists of three services:
+
+| Service | Container | Port | Notes |
+|---------|-----------|------|-------|
+| PostgreSQL | `skillbridge-db` | 5432 | Postgres 16, healthchecked |
+| Backend API | `skillbridge-backend` | 8000 | FastAPI + Gunicorn (4 workers), healthchecked |
+| Frontend | `skillbridge-frontend` | 80 | Nginx serving the React SPA; proxies `/api` to the backend |
+
+The **frontend container** does triple duty — it serves the compiled SPA, acts as a reverse proxy for API
+requests (`location /api → backend:8000`), and provides deep-link support via SPA fallback
+(`try_files $uri $uri/ /index.html`), so routes like `/careers` and `/skill-gap` work on refresh.
+
+> **Note:** `.dockerignore` files are required in both `backend/` and `frontend/` build contexts — without them,
+> locked/sensitive files (e.g. `.pytest_cache`) break the image build on Windows.
+
+### Creating an Admin User
+
+```bash
 docker compose exec backend python -m scripts.create_admin
 ```
+
+The default admin used in testing and the E2E walkthrough is `admin@skillbridge.com` (login at `/admin/login`).
 
 ### Quick Start
 
@@ -554,5 +626,4 @@ cd frontend && npm install && npm run dev
 
 ## License
 
-This project is for educational purposes (KPITB x UETM).
-"# SkillBridge" 
+This project is for educational purposes (KPITB x UETM). 
