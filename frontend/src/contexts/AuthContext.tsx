@@ -5,8 +5,8 @@ interface AuthContextType {
   user: CurrentUserResponse | null;
   isLoading: boolean;
   isAuthenticated: boolean;
-  login: (data: LoginRequest) => Promise<{ requiresRoleCheck: boolean; role: string }>;
-  register: (data: RegisterRequest) => Promise<{ requiresRoleCheck: boolean; role: string }>;
+  login: (data: LoginRequest) => Promise<{ role: string }>;
+  register: (data: RegisterRequest) => Promise<{ role: string }>;
   logout: () => void;
 }
 
@@ -52,7 +52,7 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
       storeToken(response.access_token);
       const me = await authApi.getMe();
       setUser(me);
-      return { requiresRoleCheck: true, role: response.user.role };
+      return { role: response.user.role };
     },
     []
   );
@@ -60,10 +60,9 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
   const register = useCallback(
     async (data: RegisterRequest) => {
       const response = await authApi.register(data);
-      storeToken(response.access_token);
-      const me = await authApi.getMe();
-      setUser(me);
-      return { requiresRoleCheck: true, role: response.user.role };
+      clearToken();
+      setUser(null);
+      return { role: response.user.role };
     },
     []
   );

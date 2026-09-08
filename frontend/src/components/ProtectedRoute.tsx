@@ -4,9 +4,10 @@ import { LoadingState } from "@/components/ui/LoadingState";
 
 interface ProtectedRouteProps {
   requiredRole?: string;
+  loginPath?: string;
 }
 
-export function ProtectedRoute({ requiredRole }: ProtectedRouteProps) {
+export function ProtectedRoute({ requiredRole, loginPath = "/student/login" }: ProtectedRouteProps) {
   const { user, isLoading } = useAuth();
 
   if (isLoading) {
@@ -14,10 +15,11 @@ export function ProtectedRoute({ requiredRole }: ProtectedRouteProps) {
   }
 
   if (!user) {
-    return <Navigate to="/login" replace />;
+    return <Navigate to={loginPath} replace />;
   }
 
   if (requiredRole && user.role !== requiredRole) {
+    const isAdmin = user.role === "admin";
     return (
       <div className="min-h-screen bg-background flex items-center justify-center px-4">
         <div className="text-center space-y-4 max-w-md">
@@ -42,21 +44,26 @@ export function ProtectedRoute({ requiredRole }: ProtectedRouteProps) {
             Access Restricted
           </h2>
           <p className="text-muted-foreground">
-            This account is not registered as a student.
+            {isAdmin
+              ? "This account is an admin. Please use the admin dashboard."
+              : "This account is not registered as a student."}
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
-            <a
-              href="/admin"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
-            >
-              Go to Admin Dashboard
-            </a>
-            <a
-              href="/login"
-              className="inline-flex items-center justify-center px-4 py-2 rounded-lg border border-border text-sm font-medium hover:bg-accent transition-colors"
-            >
-              Sign in as Student
-            </a>
+            {isAdmin ? (
+              <a
+                href="/admin"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+              >
+                Go to Admin Dashboard
+              </a>
+            ) : (
+              <a
+                href="/student/login"
+                className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors"
+              >
+                Sign in as Student
+              </a>
+            )}
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useNavigate } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -8,8 +8,8 @@ import { Eye, EyeOff, Mail, Lock, User } from "lucide-react";
 function getErrorMessage(error: unknown): string {
   if (error instanceof Error) {
     const msg = error.message;
-    if (msg.includes("Email is already registered")) {
-      return "An account with this email already exists.";
+    if (msg.includes("Email is already registered") || msg.includes("already registered")) {
+      return "This email is already registered. Please sign in instead.";
     }
     if (msg.includes("Passwords do not match")) {
       return "Passwords do not match.";
@@ -33,6 +33,7 @@ function getErrorMessage(error: unknown): string {
 
 export function RegisterPage() {
   const { user, isLoading: authLoading, register } = useAuth();
+  const navigate = useNavigate();
 
   const [fullName, setFullName] = useState("");
   const [email, setEmail] = useState("");
@@ -61,7 +62,7 @@ export function RegisterPage() {
   }
 
   if (user) {
-    return <Navigate to="/profile" replace />;
+    return <Navigate to={user.role === "admin" ? "/admin" : "/profile"} replace />;
   }
 
   function validate(): boolean {
@@ -108,19 +109,16 @@ export function RegisterPage() {
 
     setIsSubmitting(true);
     try {
-      const result = await register({
+      await register({
         email: email.trim(),
         password,
         confirm_password: confirmPassword,
         full_name: fullName.trim(),
       });
 
-      if (result.requiresRoleCheck && result.role !== "student") {
-        setError(
-          "This account is not registered as a student. Please contact support."
-        );
-        return;
-      }
+      navigate("/student/login", {
+        state: { message: "Account created successfully. Please sign in." },
+      });
     } catch (err) {
       setError(getErrorMessage(err));
     } finally {
@@ -132,7 +130,7 @@ export function RegisterPage() {
     <div className="min-h-screen bg-background flex items-center justify-center px-4 sm:px-6 lg:px-8 py-12">
       <div className="w-full max-w-md space-y-8">
         <div className="text-center space-y-2">
-          <Link to="/login" className="inline-block">
+          <Link to="/student/login" className="inline-block">
             <h1 className="text-2xl font-bold tracking-tight text-foreground">
               SkillBridge
             </h1>
@@ -144,10 +142,10 @@ export function RegisterPage() {
 
         <div className="space-y-2">
           <h2 className="text-2xl font-bold tracking-tight text-foreground">
-            Create Student Account
+            Create Your SkillBridge Account
           </h2>
           <p className="text-sm text-muted-foreground">
-            Join SkillBridge to discover your career path.
+            Start building your career with personalized recommendations.
           </p>
         </div>
 
@@ -157,6 +155,16 @@ export function RegisterPage() {
             className="rounded-lg border border-destructive/20 bg-destructive/5 p-4 text-sm text-destructive"
           >
             {error}
+            {error.includes("already registered") && (
+              <div className="mt-2">
+                <Link
+                  to="/student/login"
+                  className="font-medium text-primary hover:text-primary/80 transition-colors"
+                >
+                  Go to Student Login
+                </Link>
+              </div>
+            )}
           </div>
         )}
 
@@ -363,7 +371,7 @@ export function RegisterPage() {
         <p className="text-center text-sm text-muted-foreground">
           Already have an account?{" "}
           <Link
-            to="/login"
+            to="/student/login"
             className="font-medium text-primary hover:text-primary/80 transition-colors"
           >
             Sign In

@@ -28,8 +28,9 @@ def build_features(profile: StudentProfile, skills: list[StudentSkill]) -> dict:
     skill_values = {}
     for ss in skills:
         if ss.skill:
-            # Use the skill's normalized_name to match Dataset 1 column format
-            skill_col = f"Skill_{ss.skill.normalized_name.replace(' ', '_')}"
+            # Use the skill's display name to build the model column name,
+            # preserving case and dots (e.g. "Node.js" → "Skill_Node.js").
+            skill_col = f"Skill_{ss.skill.name.replace(' ', '_').replace('/', '_')}"
             skill_values[skill_col] = ss.proficiency
 
     skill_level_sum = sum(s.proficiency for s in skills)

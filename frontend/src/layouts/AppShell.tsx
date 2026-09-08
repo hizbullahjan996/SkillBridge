@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
 import { useAuth } from "@/contexts/AuthContext";
 import {
@@ -14,12 +14,14 @@ import {
   Menu,
   Shield,
   LogOut,
+  Target,
 } from "lucide-react";
 
 const STUDENT_NAV = [
   { label: "Dashboard", path: "/profile", icon: LayoutDashboard },
   { label: "My Skills", path: "/skills", icon: BarChart3 },
   { label: "Career Explorer", path: "/careers", icon: Briefcase },
+  { label: "Skill Gap", path: "/skill-gap", icon: Target },
   { label: "Job Board", path: "/jobs", icon: GraduationCap },
   { label: "Learning", path: "/learning-resources", icon: BookOpen },
   { label: "AI Assistant", path: "/assistant", icon: MessageSquare },
@@ -27,9 +29,16 @@ const STUDENT_NAV = [
 
 function AppShell() {
   const location = useLocation();
+  const navigate = useNavigate();
   const { user, logout } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
+
+  function handleLogout() {
+    logout();
+    setMobileOpen(false);
+    navigate("/student/login", { state: { message: "You have been logged out successfully." } });
+  }
 
   const isActive = (path: string) => {
     if (path === "/profile") return location.pathname === "/profile" || location.pathname === "/";
@@ -97,10 +106,7 @@ function AppShell() {
           {sidebarOpen && <span>Settings</span>}
         </Link>
         <button
-          onClick={() => {
-            logout();
-            setMobileOpen(false);
-          }}
+          onClick={handleLogout}
           className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-muted-foreground hover:bg-accent hover:text-foreground transition-colors w-full"
           title="Sign Out"
         >
@@ -156,7 +162,7 @@ function AppShell() {
             <span className="text-sm font-semibold">SkillBridge</span>
           </div>
           <button
-            onClick={logout}
+            onClick={handleLogout}
             className="p-2 rounded-lg hover:bg-accent text-muted-foreground"
             title="Sign Out"
           >

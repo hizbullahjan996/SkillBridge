@@ -1,10 +1,15 @@
 from typing import Annotated
 
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy import func
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_active_user
 from app.core.database import get_db
+from app.models.career import Career
+from app.models.career_job_mapping import CareerJobMapping
+from app.models.career_skill import CareerSkill
+from app.models.recommendation import CareerRecommendation
 from app.models.user import User
 from app.schemas.skill import (
     SkillResponse,
@@ -30,6 +35,41 @@ def list_skills(
 ) -> list[SkillResponse]:
     skills = get_all_skills(db, category=category, search=search)
     return [SkillResponse.model_validate(s) for s in skills]
+
+
+@router.get("/careers")
+def list_careers(db: Annotated[Session, Depends(get_db)]):
+    careers = db.query(Career).all()
+    items = []
+    for career in careers:
+        skill_count = (
+            db.query(func.count(CareerSkill.id))
+            .filter(CareerSkill.career_id == career.id)
+            .scalar()
+            or 0
+        )
+        job_count = (
+            db.query(func.count(CareerJobMapping.id))
+            .filter(CareerJobMapping.career_id == career.id)
+            .scalar()
+            or 0
+        )
+        rec_count = (
+            db.query(func.count(CareerRecommendation.id))
+            .filter(CareerRecommendation.career_id == career.id)
+            .scalar()
+            or 0
+        )
+        items.append({
+            "career_id": career.id,
+            "career_name": career.name,
+            "description": career.description,
+            "recommendation_count": rec_count,
+            "job_count": job_count,
+            "skill_count": skill_count,
+        })
+    items.sort(key=lambda x: x["recommendation_count"], reverse=True)
+    return items
 
 
 @router.post(

@@ -78,6 +78,43 @@ def list_jobs(
     )
 
 
+@router.get("/jobs/analytics")
+def job_analytics(db: Annotated[Session, Depends(get_db)]):
+    total = db.query(func.count(Job.id)).scalar() or 0
+
+    cities = (
+        db.query(Job.city, func.count(Job.id).label("cnt"))
+        .group_by(Job.city)
+        .order_by(func.count(Job.id).desc())
+        .limit(10)
+        .all()
+    )
+
+    sectors = (
+        db.query(Job.sector, func.count(Job.id).label("cnt"))
+        .group_by(Job.sector)
+        .order_by(func.count(Job.id).desc())
+        .limit(10)
+        .all()
+    )
+
+    skills = (
+        db.query(Skill.name, func.count(JobSkill.id).label("cnt"))
+        .join(JobSkill, JobSkill.skill_id == Skill.id)
+        .group_by(Skill.name)
+        .order_by(func.count(JobSkill.id).desc())
+        .limit(10)
+        .all()
+    )
+
+    return {
+        "total_jobs": total,
+        "top_cities": [{"name": c, "count": n} for c, n in cities],
+        "top_sectors": [{"name": s, "count": n} for s, n in sectors],
+        "top_skills": [{"name": s, "count": n} for s, n in skills],
+    }
+
+
 @router.get("/jobs/{job_id}", response_model=JobDetailResponse)
 def get_job(
     job_id: int,

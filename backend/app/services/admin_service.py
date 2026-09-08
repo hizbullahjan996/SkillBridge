@@ -9,6 +9,7 @@ import logging
 import math
 import os
 from dataclasses import dataclass, field
+from pathlib import Path
 
 from sqlalchemy import func, distinct
 from sqlalchemy.orm import Session
@@ -496,10 +497,10 @@ def get_system_health(db: Session) -> SystemHealth:
         db_status = "unhealthy"
 
     ml_status = "not_configured"
-    ml_path = os.getenv("ML_MODEL_PATH", "../ml/models/skillbridge_career_classifier.joblib")
+    ml_path = os.getenv("ML_MODEL_PATH", "")
+    if not ml_path:
+        ml_path = str(Path(__file__).resolve().parent.parent / "ml" / "artifacts" / "skillbridge_career_classifier.joblib")
     if os.path.exists(ml_path):
-        ml_status = "available"
-    elif os.path.exists(os.path.join(os.path.dirname(__file__), "..", ml_path.lstrip(".."))):
         ml_status = "available"
 
     llm_status = "not_configured"

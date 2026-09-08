@@ -1,5 +1,5 @@
 import { useState, type FormEvent } from "react";
-import { Navigate, Link } from "react-router-dom";
+import { Navigate, Link, useLocation } from "react-router-dom";
 import { useAuth } from "@/contexts/AuthContext";
 import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
@@ -34,6 +34,9 @@ function getErrorMessage(error: unknown): string {
 
 export function LoginPage() {
   const { user, isLoading: authLoading, login } = useAuth();
+  const location = useLocation();
+  const isAdminLogin = location.pathname === "/admin/login";
+  const successMessage = location.state?.message as string | undefined;
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -54,7 +57,7 @@ export function LoginPage() {
   }
 
   if (user) {
-    return <Navigate to="/profile" replace />;
+    return <Navigate to={user.role === "admin" ? "/admin" : "/profile"} replace />;
   }
 
   function validate(): boolean {
@@ -86,9 +89,16 @@ export function LoginPage() {
     try {
       const result = await login({ email: email.trim(), password });
 
-      if (result.requiresRoleCheck && result.role !== "student") {
+      if (isAdminLogin && result.role !== "admin") {
         setError(
-          "This account is not registered as a student. Please use the admin login or contact support."
+          "This account is not an admin account. Please use the student login."
+        );
+        return;
+      }
+
+      if (!isAdminLogin && result.role !== "student") {
+        setError(
+          "This account is not registered as a student. Please use the admin login."
         );
         return;
       }
@@ -111,29 +121,33 @@ export function LoginPage() {
                 SkillBridge
               </h1>
               <p className="text-lg text-muted-foreground">
-                AI-Powered Career &amp; Skill Intelligence Platform
+                {isAdminLogin ? "Admin Panel" : "AI-Powered Career & Skill Intelligence Platform"}
               </p>
             </div>
 
             <p className="text-xl text-foreground/80 leading-relaxed">
-              Discover your career path. Build the skills employers need.
+              {isAdminLogin
+                ? "Manage and monitor the SkillBridge platform."
+                : "Discover your career path. Build the skills employers need."}
             </p>
 
-            <div className="space-y-4 pt-4">
-              {FEATURES.map((feature) => {
-                const Icon = feature.icon;
-                return (
-                  <div key={feature.text} className="flex items-center gap-3">
-                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
-                      <Icon className="h-5 w-5" />
+            {!isAdminLogin && (
+              <div className="space-y-4 pt-4">
+                {FEATURES.map((feature) => {
+                  const Icon = feature.icon;
+                  return (
+                    <div key={feature.text} className="flex items-center gap-3">
+                      <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-primary/10 text-primary">
+                        <Icon className="h-5 w-5" />
+                      </div>
+                      <span className="text-sm font-medium text-foreground/80">
+                        {feature.text}
+                      </span>
                     </div>
-                    <span className="text-sm font-medium text-foreground/80">
-                      {feature.text}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
+                  );
+                })}
+              </div>
+            )}
           </div>
         </div>
       </div>
@@ -147,18 +161,29 @@ export function LoginPage() {
               SkillBridge
             </h1>
             <p className="text-sm text-muted-foreground">
-              AI-Powered Career &amp; Skill Intelligence Platform
+              {isAdminLogin ? "Admin Panel" : "AI-Powered Career & Skill Intelligence Platform"}
             </p>
           </div>
 
           <div className="space-y-2">
             <h2 className="text-2xl font-bold tracking-tight text-foreground">
-              Welcome Back
+              {isAdminLogin ? "Admin Sign In" : "Welcome Back"}
             </h2>
             <p className="text-sm text-muted-foreground">
-              Sign in to continue your career journey.
+              {isAdminLogin
+                ? "Sign in to access the admin dashboard."
+                : "Sign in to continue your career journey."}
             </p>
           </div>
+
+          {successMessage && (
+            <div
+              role="status"
+              className="rounded-lg border border-green-200 bg-green-50 p-4 text-sm text-green-800 dark:border-green-800 dark:bg-green-950 dark:text-green-200"
+            >
+              {successMessage}
+            </div>
+          )}
 
           {error && (
             <div
@@ -256,16 +281,6 @@ export function LoginPage() {
               )}
             </div>
 
-            <div className="flex items-center justify-end">
-              <button
-                type="button"
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors cursor-default"
-                title="Password reset is not available yet"
-              >
-                Forgot password?
-              </button>
-            </div>
-
             <Button
               type="submit"
               loading={isSubmitting}
@@ -277,26 +292,41 @@ export function LoginPage() {
             </Button>
           </form>
 
-          <div className="relative">
-            <div className="absolute inset-0 flex items-center">
-              <div className="w-full border-t border-border" />
-            </div>
-            <div className="relative flex justify-center text-xs uppercase">
-              <span className="bg-background px-2 text-muted-foreground">
-                or
-              </span>
-            </div>
-          </div>
+          {!isAdminLogin && (
+            <>
+              <div className="relative">
+                <div className="absolute inset-0 flex items-center">
+                  <div className="w-full border-t border-border" />
+                </div>
+                <div className="relative flex justify-center text-xs uppercase">
+                  <span className="bg-background px-2 text-muted-foreground">
+                    or
+                  </span>
+                </div>
+              </div>
 
-          <p className="text-center text-sm text-muted-foreground">
-            Don&apos;t have an account?{" "}
-            <Link
-              to="/register"
-              className="font-medium text-primary hover:text-primary/80 transition-colors"
-            >
-              Create Student Account
-            </Link>
-          </p>
+              <p className="text-center text-sm text-muted-foreground">
+                Don&apos;t have an account?{" "}
+                <Link
+                  to="/student/register"
+                  className="font-medium text-primary hover:text-primary/80 transition-colors"
+                >
+                  Create Student Account
+                </Link>
+              </p>
+            </>
+          )}
+
+          {isAdminLogin && (
+            <p className="text-center text-sm text-muted-foreground">
+              <Link
+                to="/student/login"
+                className="font-medium text-primary hover:text-primary/80 transition-colors"
+              >
+                Student Sign In
+              </Link>
+            </p>
+          )}
         </div>
       </div>
     </div>

@@ -71,30 +71,6 @@ def list_learning_resources(
     )
 
 
-@router.get("/learning-resources/{resource_id}", response_model=LearningResourceResponse)
-def get_learning_resource(
-    resource_id: int,
-    db: Annotated[Session, Depends(get_db)],
-) -> LearningResourceResponse:
-    result = resource_svc.get_resource_by_id(db, resource_id)
-    if not result:
-        raise HTTPException(status_code=404, detail="Resource not found")
-
-    return LearningResourceResponse(
-        id=result.resource_id,
-        title=result.title,
-        provider=result.provider,
-        description=result.description,
-        url=result.url,
-        resource_type=result.resource_type,
-        difficulty=result.difficulty,
-        is_free=result.is_free,
-        skills=[ResourceSkillResponse(**s) for s in result.skills],
-        created_at=result.created_at,
-        updated_at=result.updated_at,
-    )
-
-
 @router.get("/learning-resources/recommended", response_model=RecommendedResourcesResponse)
 def get_recommended_resources(
     current_user: Annotated[User, Depends(get_current_active_user)],
@@ -146,6 +122,30 @@ def get_recommended_resources(
         resources=items,
         total=len(items),
         career_name=roadmap.career_name,
+    )
+
+
+@router.get("/learning-resources/{resource_id}", response_model=LearningResourceResponse)
+def get_learning_resource(
+    resource_id: int,
+    db: Annotated[Session, Depends(get_db)],
+) -> LearningResourceResponse:
+    result = resource_svc.get_resource_by_id(db, resource_id)
+    if not result:
+        raise HTTPException(status_code=404, detail="Resource not found")
+
+    return LearningResourceResponse(
+        id=result.resource_id,
+        title=result.title,
+        provider=result.provider,
+        description=result.description,
+        url=result.url,
+        resource_type=result.resource_type,
+        difficulty=result.difficulty,
+        is_free=result.is_free,
+        skills=[ResourceSkillResponse(**s) for s in result.skills],
+        created_at=result.created_at,
+        updated_at=result.updated_at,
     )
 
 

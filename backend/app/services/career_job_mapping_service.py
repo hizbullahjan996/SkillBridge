@@ -1,5 +1,6 @@
 """Career-to-job mapping service."""
 import logging
+from collections import defaultdict
 from difflib import SequenceMatcher
 
 from sqlalchemy.orm import Session
@@ -90,10 +91,25 @@ def generate_mappings(db, force=False):
         else:
             career_skill_cache[career.id] = set()
 
+    # Precompute skill names per job once to avoid per-pair DB queries.
+    job_skill_map = defaultdict(set)
+    for js in db.query(JobSkill).all():
+        job_skill_map[js.job_id].add(js.skill_id)
+    all_skill_ids = {sid for sids in job_skill_map.values() for sid in sids}
+    skill_name_by_id = {}
+    if all_skill_ids:
+        for s in db.query(Skill).filter(Skill.id.in_(all_skill_ids)).all():
+            skill_name_by_id[s.id] = s.normalized_name
+    job_skills_cache = {
+        job_id: {skill_name_by_id[sid] for sid in sids if sid in skill_name_by_id}
+        for job_id, sids in job_skill_map.items()
+    }
+
     count = 0
     for career in careers:
         norm = career.normalized_name
         keywords = CAREER_KEYWORDS.get(norm, [career.name.lower()])
+        career_skills = career_skill_cache.get(career.id, set())
 
         for job in jobs:
             if (career.id, job.job_title_clean) in existing:
@@ -102,8 +118,7 @@ def generate_mappings(db, force=False):
             job_title_lower = normalize_title(job.job_title_clean)
             max_title_sim = max((title_similarity(kw, job_title_lower) for kw in keywords), default=0.0)
 
-            job_skills = get_job_skill_names(db, job.id)
-            career_skills = career_skill_cache.get(career.id, set())
+            job_skills = job_skills_cache.get(job.id, set())
             skill_overlap = compute_skill_overlap(career_skills, job_skills)
 
             mapping_type, confidence = classify_mapping(max_title_sim, skill_overlap)

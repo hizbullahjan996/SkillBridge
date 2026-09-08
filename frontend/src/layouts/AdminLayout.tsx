@@ -1,10 +1,10 @@
 import { useState } from "react";
-import { Link, useLocation, Outlet } from "react-router-dom";
+import { Link, useLocation, Outlet, useNavigate } from "react-router-dom";
 import { cn } from "@/lib/utils";
+import { useAuth } from "@/contexts/AuthContext";
 import {
   LayoutDashboard,
   Users,
-  GraduationCap,
   Wrench,
   Briefcase,
   Building2,
@@ -16,12 +16,12 @@ import {
   ChevronLeft,
   Menu,
   ExternalLink,
+  LogOut,
 } from "lucide-react";
 
 const NAV_ITEMS = [
   { label: "Dashboard", path: "/admin", icon: LayoutDashboard },
   { label: "Users", path: "/admin/users", icon: Users },
-  { label: "Students", path: "/admin/students", icon: GraduationCap },
   { label: "Skills", path: "/admin/skills", icon: Wrench },
   { label: "Careers", path: "/admin/careers", icon: Briefcase },
   { label: "Jobs", path: "/admin/jobs", icon: Building2 },
@@ -34,13 +34,22 @@ const NAV_ITEMS = [
 
 export function AdminLayout() {
   const location = useLocation();
+  const navigate = useNavigate();
+  const { user, logout } = useAuth();
   const [sidebarOpen, setSidebarOpen] = useState(true);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [showLogoutConfirm, setShowLogoutConfirm] = useState(false);
 
   const isActive = (path: string) => {
     if (path === "/admin") return location.pathname === "/admin";
     return location.pathname.startsWith(path);
   };
+
+  function handleLogout() {
+    logout();
+    setShowLogoutConfirm(false);
+    navigate("/admin/login", { state: { message: "You have been logged out successfully." } });
+  }
 
   const SidebarContent = () => (
     <>
@@ -79,7 +88,15 @@ export function AdminLayout() {
         })}
       </nav>
 
-      <div className="px-3 py-4 border-t border-border/50">
+      <div className="px-3 py-4 border-t border-border/50 space-y-1">
+        {user && sidebarOpen && (
+          <div className="px-3 py-2 mb-1">
+            <p className="text-xs font-medium text-foreground truncate">
+              {user.email}
+            </p>
+            <p className="text-[10px] text-muted-foreground truncate">Admin</p>
+          </div>
+        )}
         <Link
           to="/"
           onClick={() => setMobileOpen(false)}
@@ -89,6 +106,17 @@ export function AdminLayout() {
           <ExternalLink className="h-5 w-5 flex-shrink-0" />
           {sidebarOpen && <span>Student View</span>}
         </Link>
+        <button
+          onClick={() => {
+            setShowLogoutConfirm(true);
+            setMobileOpen(false);
+          }}
+          className="flex items-center gap-3 rounded-lg px-3 py-2.5 text-sm font-medium text-destructive hover:bg-destructive/10 transition-colors w-full"
+          title="Sign Out"
+        >
+          <LogOut className="h-5 w-5 flex-shrink-0" />
+          {sidebarOpen && <span>Sign Out</span>}
+        </button>
       </div>
     </>
   );
@@ -135,6 +163,15 @@ export function AdminLayout() {
             SB
           </div>
           <span className="text-sm font-semibold">Admin Panel</span>
+          <div className="ml-auto">
+            <button
+              onClick={() => setShowLogoutConfirm(true)}
+              className="p-2 rounded-lg hover:bg-accent text-muted-foreground"
+              title="Sign Out"
+            >
+              <LogOut className="h-4 w-4" />
+            </button>
+          </div>
         </div>
 
         <main className="flex-1 overflow-y-auto">
@@ -143,6 +180,38 @@ export function AdminLayout() {
           </div>
         </main>
       </div>
+
+      {/* Logout confirmation dialog */}
+      {showLogoutConfirm && (
+        <div className="fixed inset-0 z-50 flex items-center justify-center px-4">
+          <div className="fixed inset-0 bg-black/50" onClick={() => setShowLogoutConfirm(false)} />
+          <div className="relative bg-card rounded-xl shadow-xl max-w-sm w-full p-6 space-y-4">
+            <div className="flex items-center gap-3">
+              <div className="flex h-10 w-10 items-center justify-center rounded-full bg-destructive/10">
+                <LogOut className="h-5 w-5 text-destructive" />
+              </div>
+              <div>
+                <h3 className="text-lg font-semibold text-foreground">Sign Out</h3>
+                <p className="text-sm text-muted-foreground">Are you sure you want to sign out?</p>
+              </div>
+            </div>
+            <div className="flex gap-3 justify-end pt-2">
+              <button
+                onClick={() => setShowLogoutConfirm(false)}
+                className="px-4 py-2 rounded-lg border border-border text-sm font-medium hover:bg-accent transition-colors"
+              >
+                Cancel
+              </button>
+              <button
+                onClick={handleLogout}
+                className="px-4 py-2 rounded-lg bg-destructive text-destructive-foreground text-sm font-medium hover:bg-destructive/90 transition-colors"
+              >
+                Sign Out
+              </button>
+            </div>
+          </div>
+        </div>
+      )}
     </div>
   );
 }

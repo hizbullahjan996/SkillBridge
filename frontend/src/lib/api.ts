@@ -211,6 +211,25 @@ export const skillsApi = {
 
   removeSkill: (skillId: number) =>
     apiClient.delete(`/skills/me/${skillId}`),
+
+  getCareers: () =>
+    apiClient.get<Array<{
+      career_id: number;
+      career_name: string;
+      description: string | null;
+      recommendation_count: number;
+      job_count: number;
+      skill_count: number;
+    }>>("/skills/careers"),
+};
+
+export const jobsApi = {
+  getAnalytics: () => apiClient.get<{
+    total_jobs: number;
+    top_cities: Array<{ name: string; count: number }>;
+    top_sectors: Array<{ name: string; count: number }>;
+    top_skills: Array<{ name: string; count: number }>;
+  }>("/jobs/analytics"),
 };
 
 export const learningResourcesApi = {
@@ -255,6 +274,113 @@ export const assistantApi = {
 
   deleteConversation: (id: number) =>
     apiClient.delete(`/assistant/conversations/${id}`),
+};
+
+export interface CareerRecommendationItem {
+  rank: number;
+  career: string;
+  probability: number;
+}
+
+export interface CareerRecommendationResponse {
+  ready: boolean;
+  message: string;
+  recommendations: CareerRecommendationItem[];
+  model_version: string | null;
+  missing_fields: string[];
+  missing_skills: string[];
+}
+
+export interface SkillGapMatchedSkill {
+  id: number;
+  name: string;
+  normalized_name: string;
+  category: string;
+}
+
+export interface SkillGapMissingSkill {
+  skill_id: number;
+  skill_name: string;
+  normalized_name: string;
+  category: string;
+  priority_score: number;
+  priority: string;
+  demand_count: number;
+  career_relevance_count: number;
+  avg_importance: number;
+}
+
+export interface SkillGapSummary {
+  matched_count: number;
+  missing_count: number;
+  match_percentage: number;
+  total_required: number;
+}
+
+export interface CareerSkillGapResponse {
+  career: { id: number; name: string };
+  skill_gap: SkillGapSummary;
+  matched_skills: SkillGapMatchedSkill[];
+  missing_skills: SkillGapMissingSkill[];
+}
+
+export interface JobRecommendationItem {
+  job_id: number;
+  job_title: string;
+  company: string;
+  city: string;
+  sector: string;
+  job_type: string;
+  salary_min: number | null;
+  salary_max: number | null;
+  salary_average: number | null;
+  education_level: string | null;
+  experience_required: string | null;
+  match_score: number;
+  skill_match_percentage: number;
+  career_score: number;
+  education_score: number;
+  experience_score: number;
+  matched_skills: number;
+  total_required_skills: number;
+  in_top_career: boolean;
+}
+
+export const recommendationsApi = {
+  predictCareers: () =>
+    apiClient.post<CareerRecommendationResponse>("/recommendations/careers"),
+
+  getLatest: () =>
+    apiClient.get<{
+      model_version: string | null;
+      created_at: string | null;
+      recommendations: CareerRecommendationItem[];
+    }>("/recommendations/careers/latest"),
+
+  getHistory: () =>
+    apiClient.get<{
+      results: Array<{
+        model_version: string | null;
+        created_at: string | null;
+        recommendations: CareerRecommendationItem[];
+      }>;
+    }>("/recommendations/careers/history"),
+};
+
+export const skillGapApi = {
+  getCareerGap: (careerId: number) =>
+    apiClient.get<CareerSkillGapResponse>(`/skill-gaps/career/${careerId}`),
+};
+
+export const jobRecommendationsApi = {
+  getRecommended: (params?: { city?: string; sector?: string; job_type?: string; page?: string; page_size?: string }) =>
+    apiClient.get<{
+      items: JobRecommendationItem[];
+      total: number;
+      page: number;
+      page_size: number;
+      pages: number;
+    }>("/recommendations/jobs", params as Record<string, string>),
 };
 
 export const roadmapApi = {

@@ -32,15 +32,18 @@ EDUCATION_HIERARCHY = {
 }
 
 
-def compute_career_score(job, top_career_ids, db):
+def compute_career_score(job, top_career_ids, db, career_mappings_cache=None):
     if not top_career_ids:
         return 0.0
 
-    mappings = (
-        db.query(CareerJobMapping)
-        .filter(CareerJobMapping.career_id.in_(top_career_ids))
-        .all()
-    )
+    if career_mappings_cache is not None:
+        mappings = career_mappings_cache
+    else:
+        mappings = (
+            db.query(CareerJobMapping)
+            .filter(CareerJobMapping.career_id.in_(top_career_ids))
+            .all()
+        )
 
     matching_mappings = [
         m for m in mappings
@@ -61,12 +64,15 @@ def compute_career_score(job, top_career_ids, db):
     return min(1.0, best_confidence + rank_bonus)
 
 
-def compute_skill_score(student_skills_set, job_id, db):
-    job_skill_rows = db.query(JobSkill).filter(JobSkill.job_id == job_id).all()
-    if not job_skill_rows:
+def compute_skill_score(student_skills_set, job_id, db, job_skills_cache=None):
+    if job_skills_cache is not None:
+        job_skill_ids = job_skills_cache.get(job_id, set())
+    else:
+        job_skill_rows = db.query(JobSkill).filter(JobSkill.job_id == job_id).all()
+        job_skill_ids = {js.skill_id for js in job_skill_rows}
+    if not job_skill_ids:
         return 1.0
 
-    job_skill_ids = {js.skill_id for js in job_skill_rows}
     matched = len(student_skills_set & job_skill_ids)
     total = len(job_skill_ids)
 
@@ -117,9 +123,9 @@ def compute_experience_score(internships, job_exp_min):
         return 0.3
 
 
-def compute_job_match_score(job, profile, student_skill_ids, top_career_ids, db):
-    career = compute_career_score(job, top_career_ids, db)
-    skill = compute_skill_score(student_skill_ids, job.id, db)
+def compute_job_match_score(job, profile, student_skill_ids, top_career_ids, db, job_skills_cache=None, career_mappings_cache=None):
+    career = compute_career_score(job, top_career_ids, db, career_mappings_cache)
+    skill = compute_skill_score(student_skill_ids, job.id, db, job_skills_cache)
     education = compute_education_score(profile.major, job.education_level)
     experience = compute_experience_score(profile.internships, job.experience_min_years)
 
@@ -156,17 +162,26 @@ def get_recommended_jobs(db, user_id, page=1, page_size=10, city=None, sector=No
     student_skills = db.query(StudentSkill).filter(StudentSkill.student_id == profile.id).all()
     student_skill_ids = {ss.skill_id for ss in student_skills}
 
-    job_ids_for_careers = set()
+    # Precompute caches to avoid N+1 queries per job.
+    job_skills_cache = {}
+    for js in db.query(JobSkill).all():
+        job_skills_cache.setdefault(js.job_id, set()).add(js.skill_id)
+
+    career_mappings_cache = []
     if top_career_ids:
-        mappings = (
+        career_mappings_cache = (
             db.query(CareerJobMapping)
             .filter(CareerJobMapping.career_id.in_(top_career_ids))
             .all()
         )
-        for m in mappings:
-            job_title_matches = db.query(Job.id).filter(Job.job_title_clean == m.job_title_clean).all()
-            for (jid,) in job_title_matches:
-                job_ids_for_careers.add(jid)
+
+    job_ids_for_careers = set()
+    if career_mappings_cache:
+        mapped_titles = {m.job_title_clean for m in career_mappings_cache}
+        if mapped_titles:
+            job_ids_for_careers = {
+                jid for (jid,) in db.query(Job.id).filter(Job.job_title_clean.in_(mapped_titles)).all()
+            }
 
     query = db.query(Job)
     if city:
@@ -182,12 +197,15 @@ def get_recommended_jobs(db, user_id, page=1, page_size=10, city=None, sector=No
 
     scored_jobs = []
     for job in all_matching_jobs:
-        scores = compute_job_match_score(job, profile, student_skill_ids, top_career_ids, db)
+        scores = compute_job_match_score(
+            job, profile, student_skill_ids, top_career_ids, db,
+            job_skills_cache=job_skills_cache,
+            career_mappings_cache=career_mappings_cache,
+        )
 
-        skill_rows = db.query(JobSkill).filter(JobSkill.job_id == job.id).all()
-        skill_ids = {js.skill_id for js in skill_rows}
-        matched_count = len(student_skill_ids & skill_ids)
-        total_required = len(skill_ids)
+        job_skill_ids = job_skills_cache.get(job.id, set())
+        matched_count = len(student_skill_ids & job_skill_ids)
+        total_required = len(job_skill_ids)
 
         scored_jobs.append({
             "job_id": job.id,

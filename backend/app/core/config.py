@@ -24,7 +24,7 @@ class Settings(BaseSettings):
     cors_origins: List[str] = ["http://localhost:5173", "http://localhost:3000"]
 
     # ML
-    ml_model_path: str = "../ml/models/skillbridge_career_classifier.joblib"
+    ml_model_path: str = "app/ml/artifacts/skillbridge_career_classifier.joblib"
 
     # LLM
     llm_provider: str = "openai"

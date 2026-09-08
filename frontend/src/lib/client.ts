@@ -26,7 +26,16 @@ class ApiClient {
 
     if (!response.ok) {
       const error = await response.json().catch(() => ({}));
-      throw new Error(error.detail || `Request failed: ${response.status}`);
+      let message = `Request failed: ${response.status}`;
+      if (typeof error.detail === "string" && error.detail) {
+        message = error.detail;
+      } else if (Array.isArray(error.detail)) {
+        message = error.detail
+          .map((item: { msg?: string }) => item?.msg || "Invalid input")
+          .filter(Boolean)
+          .join("; ");
+      }
+      throw new Error(message);
     }
 
     if (response.status === 204) {

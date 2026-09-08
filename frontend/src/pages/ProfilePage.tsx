@@ -1,10 +1,14 @@
-import { useQuery } from "@tanstack/react-query";
+import { useState } from "react";
+import { useQuery, useMutation, useQueryClient } from "@tanstack/react-query";
 import { Link } from "react-router-dom";
-import { profileApi, skillsApi } from "@/lib/api";
+import { profileApi, skillsApi, recommendationsApi } from "@/lib/api";
 import { Card, CardContent, CardHeader, CardTitle, StatCard, SkillChip, PageHeader, LoadingState, EmptyState } from "@/components/ui";
-import { User, Award, Target, ArrowRight, Sparkles, BarChart3 } from "lucide-react";
+import { User, Award, Target, ArrowRight, Sparkles, BarChart3, Brain, TrendingUp, Zap } from "lucide-react";
 
 export function ProfilePage() {
+  const queryClient = useQueryClient();
+  const [predictError, setPredictError] = useState<string | null>(null);
+
   const { data: profile, isLoading: profileLoading } = useQuery({
     queryKey: ["profile"],
     queryFn: () => profileApi.getMyProfile(),
@@ -18,6 +22,28 @@ export function ProfilePage() {
   const { data: skills } = useQuery({
     queryKey: ["my-skills"],
     queryFn: () => skillsApi.getMySkills(),
+  });
+
+  const { data: mlReadiness } = useQuery({
+    queryKey: ["ml-readiness"],
+    queryFn: () => profileApi.getMLReadiness(),
+  });
+
+  const { data: latestRec, isLoading: recLoading } = useQuery({
+    queryKey: ["latest-recommendation"],
+    queryFn: () => recommendationsApi.getLatest(),
+  });
+
+  const predictMutation = useMutation({
+    mutationFn: () => recommendationsApi.predictCareers(),
+    onSuccess: () => {
+      setPredictError(null);
+      queryClient.invalidateQueries({ queryKey: ["latest-recommendation"] });
+      queryClient.invalidateQueries({ queryKey: ["recommendation-history"] });
+    },
+    onError: (err: Error) => {
+      setPredictError(err.message || "Failed to generate recommendations");
+    },
   });
 
   if (profileLoading) {
@@ -80,6 +106,8 @@ export function ProfilePage() {
       ],
     },
   ];
+
+  const hasRecommendations = latestRec && latestRec.recommendations.length > 0;
 
   return (
     <div className="space-y-6 animate-fade-in">
@@ -146,6 +174,103 @@ export function ProfilePage() {
           icon={<Sparkles className="h-5 w-5" />}
         />
       </div>
+
+      {/* Career Predictions Section */}
+      <Card className="overflow-hidden">
+        <div className="bg-gradient-to-r from-purple-500/10 to-blue-500/10 p-6">
+          <div className="flex items-center justify-between">
+            <div className="flex items-center gap-3">
+              <div className="rounded-lg bg-purple-100 p-2.5 text-purple-700">
+                <Brain className="h-5 w-5" />
+              </div>
+              <div>
+                <h3 className="font-semibold">AI Career Predictions</h3>
+                <p className="text-sm text-muted-foreground">
+                  {hasRecommendations && latestRec.recommendations[0]
+                    ? `Top match: ${latestRec.recommendations[0].career} (${Math.round(latestRec.recommendations[0].probability * 100)}%)`
+                    : "Get personalized career recommendations powered by ML"}
+                </p>
+              </div>
+            </div>
+            {!hasRecommendations && !recLoading && (
+              <button
+                onClick={() => predictMutation.mutate()}
+                disabled={predictMutation.isPending || !mlReadiness?.ready}
+                className="inline-flex items-center gap-2 rounded-lg bg-purple-600 px-4 py-2.5 text-sm font-medium text-white hover:bg-purple-700 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+              >
+                {predictMutation.isPending ? (
+                  <>
+                    <div className="h-4 w-4 animate-spin rounded-full border-2 border-white border-t-transparent" />
+                    Predicting...
+                  </>
+                ) : (
+                  <>
+                    <Zap className="h-4 w-4" />
+                    Get Recommendations
+                  </>
+                )}
+              </button>
+            )}
+          </div>
+
+          {!mlReadiness?.ready && !hasRecommendations && (
+            <p className="mt-3 text-sm text-amber-600">
+              Complete your profile and add at least one skill to enable career predictions.
+            </p>
+          )}
+
+          {predictError && (
+            <p className="mt-3 text-sm text-red-600">{predictError}</p>
+          )}
+
+          {predictMutation.data && !predictMutation.data.ready && (
+            <p className="mt-3 text-sm text-amber-600">{predictMutation.data.message}</p>
+          )}
+
+          {hasRecommendations && latestRec && (
+            <div className="mt-4 space-y-2">
+              {latestRec.recommendations.map((rec) => (
+                <div key={rec.rank} className="flex items-center justify-between rounded-lg bg-background/50 px-4 py-2.5">
+                  <div className="flex items-center gap-3">
+                    <span className="flex h-7 w-7 items-center justify-center rounded-full bg-purple-100 text-xs font-bold text-purple-700">
+                      {rec.rank}
+                    </span>
+                    <span className="font-medium text-sm">{rec.career}</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-24 bg-background/50 rounded-full h-2">
+                      <div
+                        className="bg-purple-600 h-2 rounded-full"
+                        style={{ width: `${rec.probability * 100}%` }}
+                      />
+                    </div>
+                    <span className="text-sm font-medium text-muted-foreground w-12 text-right">
+                      {Math.round(rec.probability * 100)}%
+                    </span>
+                  </div>
+                </div>
+              ))}
+              <div className="flex gap-2 mt-3">
+                <Link
+                  to="/careers"
+                  className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                >
+                  <TrendingUp className="h-3 w-3" />
+                  View Career Explorer
+                </Link>
+                <span className="text-muted-foreground">|</span>
+                <Link
+                  to="/jobs"
+                  className="inline-flex items-center gap-2 text-sm text-primary hover:underline"
+                >
+                  <BarChart3 className="h-3 w-3" />
+                  View Job Recommendations
+                </Link>
+              </div>
+            </div>
+          )}
+        </div>
+      </Card>
 
       {/* Profile Sections */}
       <div className="grid gap-6 md:grid-cols-2">
